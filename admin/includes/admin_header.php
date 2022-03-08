@@ -17,12 +17,18 @@
   <!-- Custom fonts for this template-->
   <link href="fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
   <!-- File not yet included in Project-->
   <!-- Page level plugin CSS-->
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dropzone.css" rel="stylesheet">
+
 
 </head>
 

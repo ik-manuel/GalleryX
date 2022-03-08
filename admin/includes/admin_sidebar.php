@@ -16,6 +16,11 @@
           <span>Upload</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="photos.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Photos</span></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="comment.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Comments</span></a>

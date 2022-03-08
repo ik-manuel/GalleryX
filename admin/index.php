@@ -26,7 +26,7 @@
 
               <?php
               
-
+  
 
               // $user = User::find_user_by_id(5);
               // $user = new User();
@@ -41,16 +41,16 @@
 
              // $user = new User();
 
-             // $user->username =  "Setainer";
-             // $user->password =  "02344";
-             // $user->first_name =  "set";
-             // $user->last_name =  "goanna";
+             // $user->username =  "Plainer";
+             // $user->password =  "123";
+             // $user->first_name =  "Quio";
+             // $user->last_name =  "Lainer";
 
-             // $user->create();
+             // $user->save();
 
 
 
-              // $users = User::find_all_users();
+              // $users = User::find_all();
               //  foreach ($users as $user) {
               //     echo $user->username ."<br>";
 
@@ -67,6 +67,34 @@
               // $found_user = User::find_user_by_id(1);
               // $user = User::instantiation($found_user);
               // echo $user->username;
+
+
+              // $photos = Photo::find_all();
+              //  foreach ($photos as $photo) {
+              //     echo $photo->title . "<br>";
+
+              //  }
+
+            //$photo = Photo::find_by_id(4);
+
+              //$user->delete();
+
+             // $photo = new Photo();
+
+             // $photo->title =  "The skyrocket 2";
+             // $photo->description =  "The beautiful versus of nature 2";
+             // $photo->filename =  "skyrocket2.jpg";
+             // $photo->type =  "jpg";
+             // $photo->size =  21;
+
+             // $photo->create();
+
+
+            //echo SITE_ROOT;
+
+
+
+
 
               ?>
 
