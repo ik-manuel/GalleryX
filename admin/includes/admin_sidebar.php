@@ -21,7 +21,7 @@
           <span>Photos</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="comment.php">
+        <a class="nav-link" href="comments.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Comments</span></a>
       </li>

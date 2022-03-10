@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
   $photo->title = $_POST['title'];
   $photo->set_file($_FILES['file_upload']);
 
-  if($photo->save()){
+  if($photo->save_file()){
     $message = "Photo uploaded successful";
   }else{
     $message = join("<br>", $photo->errors);
@@ -37,25 +37,28 @@ if(isset($_POST['submit'])){
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="index.html">Dashboard</a>
+            <a href="index.php">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">upload</li>
         </ol>
 
         <!-- Page Content -->
         <h1>Upload Photo</h1>
+        <a href="photos.php" class="btn btn-primary pull-right">View Photos</a>
+        <br><br>
         <hr>
 
         <div class="col-md-6">
           <?php echo $message; ?>
           <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
+              <label for="title">Photo Title</label>
               <input type="text" name="title" class="form-control">
             </div>
             <div class="form-group">
               <input type="file" name="file_upload">
             </div>
-            <input type="submit" name="submit" class="btn btn-primary">
+            <input type="submit" name="submit" class="btn btn-primary" value="Upload">
           </form>
         </div>
 

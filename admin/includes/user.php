@@ -38,6 +38,62 @@ class User extends Db_object {
 
 
 
+    // This is passing $_FILES['uploaded_file'] as an argument
+    public function set_image($file){
+        if(empty($file) || !$file || !is_array($file)){
+            $this->errors[] = "There was no file uploaded";
+            return false;
+
+        }elseif($file['error'] != 0){
+            $this->errors[] = $this->upload_errors_array[$file['error']];
+            return false;
+
+        }else{
+            $this->user_image = basename($file['name']);
+            $this->tmp_path = $file['tmp_name'];
+            $this->type     = $file['type'];
+            $this->size     = $file['size'];
+
+        }
+
+
+    }// END OF SET_FILE METHOD
+
+
+    public function upload_photo(){
+            if(!empty($this->errors)){
+                return false;
+            }
+
+            if(empty($this->user_image) || empty($this->tmp_path)){
+                $this->errors[] = "The file was not available";
+                return false;
+            }
+
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->user_image;
+            //$target_path = 'C:/xampp/htdocs/galleryx/admin/'. $this->upload_directory. '/' . $this->user_image;
+
+            if(file_exists($target_path)){
+                $this->errors[] = "The file {$this->user_image} already exist";
+                return false;
+            }
+
+            if(move_uploaded_file($this->tmp_path, $target_path)){
+                    unset($this->tmp_path);
+                    return true;
+
+                
+            }else{
+                $this->errors[] = "The file directory probably does not have permision";
+                return false;
+            }
+
+
+        
+    }// END OF SAVE METHOD
+
+
+
 
     
     

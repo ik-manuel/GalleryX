@@ -3,7 +3,7 @@
 <?php if(!$session->is_signed_in()){redirect("login.php");}?>
 
 <?php
-      $users = User::find_all();
+      $comments = Comment::find_all();
 ?>
  
 <?php include("includes/admin_navigation.php"); ?>
@@ -26,41 +26,37 @@
           <li class="breadcrumb-item">
             <a href="index.php">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">users</li>
+          <li class="breadcrumb-item active">Comments</li>
         </ol>
 
         <!-- Page Content -->
-        <h1>users</h1>
-        <a href="add_user.php" class="btn btn-primary pull-right">Add User</a>
-        <br><br>
-      
+        <h1>comments</h1>
+        <br>
+        
 
         <div class="col-md-12">
           <table class="table table-hover">
             <thead>
               <tr>
                 <th>Id</th>
-                <th>Photo</th>
-                <th>Username</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Author</th>
+                <th>comment</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
 
-             <?php  foreach ($users as $user) : ?>
+             <?php  foreach ($comments as $comment) : ?>
                 <tr>
-                <td><?php echo $user->id; ?></td>
-                <td><img src="<?php echo $user->image_path_and_placeholder(); ?>" alt="" class="admin-user-thumbnail user_image">
-                </td>
-                <td><?php echo $user->username; ?>
+                <td><?php echo $comment->id; ?></td>
+                <td><?php echo $comment->author; ?></td>
+                <td><?php echo $comment->body; ?></td>
+                <td>
                   <div class="action_links">
-                    <a href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
-                    <a href="edit_user.php?id=<?php echo $user->id; ?>">Edit</a>
+                    <a href="delete_comment.php?id=<?php echo $comment->id; ?>">Delete</a>
+                    <a href="edit_comment.php?id=<?php echo $comment->id; ?>">Edit</a>
                   </div>
                 </td>
-                <td><?php echo $user->first_name;    ?></td>
-                <td><?php echo $user->last_name;     ?></td>
               </tr>
               <?php endforeach; ?>  
 
