@@ -1,3 +1,4 @@
+<?php require_once("admin/includes/init.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +16,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/blog-home.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 
 </head>
 

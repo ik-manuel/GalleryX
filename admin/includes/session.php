@@ -6,17 +6,29 @@ class Session{
    // DECLARING PROPERTIES FOR SESSION CLASS 
    private $signed_in = false;
    public  $user_id;
+   public  $count;
 
 
    function __construct(){
    	session_start();
    	$this->check_the_login();
+      $this->visitor_count();
    } //END OF CONSTUCT METHOD
 
    
    public function is_signed_in(){
    	 return $this->signed_in;
    }// END OF A GETTER METHOD(IS_SIGNED_IN) 
+
+
+   public function visitor_count(){
+      if(isset($_SESSION['count'])){
+         return $this->count = $_SESSION['count']++;
+      }else{
+         return $_SESSION['count'] = 1;
+      }
+
+   }// END OF VISITOR_COUNT METHOD
 
 
    public function login($user){

@@ -62,40 +62,44 @@
           <li class="breadcrumb-item">
             <a href="index.php">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">user</li>
+          <li class="breadcrumb-item active">Edit User</li>
         </ol>
 
         <!-- Page Content -->
         <h1>Edit User</h1>
-      
-        <div class="col-md-6">
-          <img src="<?php echo $user->image_path_and_placeholder(); ?>" class="img-responsive">
+
+        <div class="row">
+          <div class="col-md-6">
+            <img class="photo-responsive" src="<?php echo $user->image_path_and_placeholder(); ?>">
+          </div>
+
+          <div class="col-md-6">
+          <form action="" method="post" enctype="multipart/form-data">
+                <?php echo $message; ?>
+                <div class="form-group">
+                  <input type="file" name="user_image" value="<?php echo $user->user_image; ?>">
+                </div>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" name="username" class="form-control" value="<?php echo $user->username; ?>">
+                </div>
+                <div class="form-group">
+                  <label for="first name">First Name</label>
+                  <input type="text" name="first_name" class="form-control" value="<?php echo $user->first_name; ?>">
+                </div>
+                <div class="form-group">
+                  <label for="last name">Last Name</label>
+                  <input type="text" name="last_name" class="form-control" value="<?php echo $user->last_name; ?>">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" class="form-control" value="<?php echo $user->password; ?>">
+                </div>
+                <input type="submit" name="update" value="Update" class="btn btn-primary pull-right">
+                <a class="btn btn-danger pull-left" href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
+        </form>
         </div>
-        <div class="col-md-6 col-md-offset-3">
-        <form action="" method="post" enctype="multipart/form-data">
-              <?php echo $message; ?>
-              <div class="form-group">
-                <input type="file" name="user_image" value="<?php echo $user->user_image; ?>">
-              </div>
-              <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $user->username; ?>">
-              </div>
-              <div class="form-group">
-                <label for="first name">First Name</label>
-                <input type="text" name="first_name" class="form-control" value="<?php echo $user->first_name; ?>">
-              </div>
-              <div class="form-group">
-                <label for="last name">Last Name</label>
-                <input type="text" name="last_name" class="form-control" value="<?php echo $user->last_name; ?>">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" class="form-control" value="<?php echo $user->password; ?>">
-              </div>
-              <input type="submit" name="update" value="Update" class="btn btn-primary pull-right">
-              <a class="btn btn-danger pull-left" href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
-      </form>
+
       </div>
 
         

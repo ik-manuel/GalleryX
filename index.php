@@ -1,4 +1,17 @@
-<?php include "includes/header.php"; ?>
+<?php include ("includes/header.php"); ?>
+
+<?php 
+
+$page = empty($_GET['page']) ? (int)$_GET['page'] : 1;
+$items_per_page = 4;
+$item_total_count = Photo::counter();
+
+
+$photos = Photo::find_all(); 
+
+
+
+?>
 
 
   <!-- Navigation -->
@@ -9,44 +22,29 @@
 
     <div class="row">
 
-      <!-- Blog Entries Column -->
-      <div class="col-md-8">
+      <div class="col-md-12">
+        <div class="img-thumbnail row">
 
-        <h1 class="my-4">Page Heading
-          <small>Secondary Text</small>
-        </h1>
 
-       
-         <!-- Blog Post -->
-        <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on January 1, 2017 by
-            <a href="#">Start Bootstrap</a>
-          </div>
+        <?php foreach ($photos as $photo): ?>
+
+           <div class="col-xs-6 col-md-3">
+             <a href="photo.php?id=<?php echo $photo->id; ?>">
+               
+               <img class="home_page_photo photo-esponsive" src="admin/<?php echo $photo->picture_path(); ?>" alt="">
+
+             </a>
+           </div>
+        <?php endforeach; ?>
+
         </div>
-
-
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
+        
 
       </div>
 
-      <!-- Sidebar Widgets Column -->
-      <?php include "includes/sidebar.php"; ?>
-
+      <!-- Sidebar Widgets Column 
+      <?php //include "includes/sidebar.php"; ?>
+      -->
     </div>
     <!-- /.row -->
 

@@ -25,9 +25,10 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
-  
-  <link href="css/style.css" rel="stylesheet">
+
   <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 
 
 </head>

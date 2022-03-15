@@ -50,10 +50,9 @@ if(empty($_GET['id'])){
         <!-- Page Content -->
         <h1>Photos</h1>
       
-        
-        <div class="col-md-12">
+        <div class="row">
+        <div class="col-md-8">
         <form action="" method="post">
-            <div class="col-md-8">
               <div class="form-group">
                 <input type="text" name="title" class="form-control" value="<?php echo $photo->title; ?>">
               </div>
@@ -72,7 +71,10 @@ if(empty($_GET['id'])){
                 <label for="Description">Description</label>
                 <textarea class="form-control" name="description" cols="30" rows="10"><?php echo $photo->description; ?></textarea>
               </div>
+            
+            </form>
             </div>
+
             <div class="col-md-4">
               <div  class="photo-info-box">
                   <div class="info-box-header">
@@ -107,7 +109,9 @@ if(empty($_GET['id'])){
                   </div>          
               </div>
           </div>
-      </form>
+      
+    </div>
+
     </div>
 
         

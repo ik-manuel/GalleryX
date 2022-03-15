@@ -16,96 +16,81 @@
 
       <div class="container-fluid">
 
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="index.php">Dashboard</a>
-          </li>
-          <li class="breadcrumb-item active">Blank Page</li>
-        </ol>
-
-              <?php
-              
-  
-
-              // $user = User::find_user_by_id(5);
-              // $user = new User();
-              // $user->username = "Tango";
-
-              // $user->update();
-
-              // $user->save();
-
-              //$user->delete();
-
-
-             // $user = new User();
-
-             // $user->username =  "Plainer";
-             // $user->password =  "123";
-             // $user->first_name =  "Quio";
-             // $user->last_name =  "Lainer";
-
-             // $user->save();
-
-
-
-              // $users = User::find_all();
-              //  foreach ($users as $user) {
-              //     echo $user->username ."<br>";
-
-              //  }
-               
-                // $found_user = User::find_user_by_id(2);
-                // echo $found_user->username;
-
-              // $all_result = User::find_all_users();
-              // while($row = mysqli_fetch_array($all_result)){
-              //     echo $row['username'] . "<br>";
-              // }
-
-              // $found_user = User::find_user_by_id(1);
-              // $user = User::instantiation($found_user);
-              // echo $user->username;
-
-
-              // $photos = Photo::find_all();
-              //  foreach ($photos as $photo) {
-              //     echo $photo->title . "<br>";
-
-              //  }
-
-            //$photo = Photo::find_by_id(4);
-
-              //$user->delete();
-
-             // $photo = new Photo();
-
-             // $photo->title =  "The skyrocket 2";
-             // $photo->description =  "The beautiful versus of nature 2";
-             // $photo->filename =  "skyrocket2.jpg";
-             // $photo->type =  "jpg";
-             // $photo->size =  21;
-
-             // $photo->create();
-
-
-            //echo SITE_ROOT;
-
-
-
-
-
-              ?>
-
-
-
-
         <!-- Page Content -->
-        <h1>Dashboard Page</h1>
+        <h1>Admin  Dashboard</h1>
         <hr>
-        <p>This is a great starting point for new custom pages.</p>
 
+      
+         <!-- Icon Cards--> 
+        <div class="row">
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-primary o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-tags"></i>
+                </div>
+                  <div class="mr-5"><h2><?php echo $session->count; ?></h2><span>new views</span></div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" href="#">
+                <span class="float-left">View Details</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-warning o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fa fa-folder-open"></i>
+                </div>
+                <div class="mr-5"><h2><?php echo Photo::counter(); ?></h2><span>Photos</span></div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" href="photos.php">
+                <span class="float-left">Total photos in Gallery</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-success o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="mr-5"><h2><?php echo User::counter(); ?></h2><span>Users</span></div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" href="users.php">
+                <span class="float-left">Total Users</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-danger o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-fw fa-comments"></i>
+                </div>
+                <div class="mr-5"><h2><?php echo Comment::counter(); ?></h2><span>Comments</span></div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" href="comments.php">
+                <span class="float-left">Total Comments</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>  <!--   END OF CARD WIDGET -->
+
+
+        
       </div>
       <!-- /.container-fluid -->
 

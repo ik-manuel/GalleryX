@@ -220,6 +220,18 @@ class Db_object {
 
 
 
+    public static function counter(){
+       global $database;
+       $sql = "SELECT COUNT(*) FROM " . static::$db_table; 
+       $result_set = $database->query($sql);
+       $row = mysqli_fetch_array($result_set);
+
+       return array_shift($row);
+
+    }// END OF COUNTER METHOD
+
+
+
 
 
 
