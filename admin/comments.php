@@ -30,7 +30,7 @@
         </ol>
 
         <!-- Page Content -->
-        <h1>comments</h1>
+        <h1>All Comments</h1>
         <br>
         
 

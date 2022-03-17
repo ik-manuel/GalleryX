@@ -45,3 +45,30 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.min.js"></script>
+  
+  <!-- Google Chart API code-->
+  <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Views',     <?php echo $session->count; ?>],
+          ['Comments',      <?php echo Comment::counter(); ?>],
+          ['Photos',  <?php echo Photo::counter(); ?>],
+          ['Users', <?php echo User::counter(); ?>]
+        ]);
+
+        var options = {
+          pieSliceText: 'label',
+          title: 'My Gallery Stats',
+          backgroundColor: 'transparent'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>

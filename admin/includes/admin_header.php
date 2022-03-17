@@ -27,8 +27,10 @@
   <link href="css/sb-admin.css" rel="stylesheet">
 
   <link href="css/dropzone.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+
+  <!-- Google Chart API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 </head>

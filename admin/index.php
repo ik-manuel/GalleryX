@@ -89,6 +89,10 @@
           </div>
         </div>  <!--   END OF CARD WIDGET -->
 
+        <div class="row">
+          <div id="piechart" style="width: 900px; height: 500px;"></div>
+        </div>
+
 
         
       </div>
