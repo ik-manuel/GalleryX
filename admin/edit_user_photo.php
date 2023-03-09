@@ -5,7 +5,7 @@
 <?php
 
 if(empty($_GET['id'])){
-  redirect("photos.php");
+  redirect("user_photos.php");
 }
 
 
@@ -20,7 +20,7 @@ if(isset($_POST['update'])){
 
     $photo->save();
     $session->message("The user {$photo->filename} has been updated successfully");
-    redirect("photos.php");
+    redirect("user_photos.php");
 
 }
 
@@ -103,7 +103,7 @@ if(isset($_POST['update'])){
                 </div>
                 <div class="info-box-footer clearfix">
                   <div class="info-box-delete delete_link pull-left">
-                      <a  href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger btn-lg ">Delete</a>   
+                      <a  href="delete_user_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger btn-lg ">Delete</a>   
                   </div>
                   <div class="info-box-update pull-right ">
                       <input type="submit" name="update" value="Update" class="btn btn-primary btn-lg ">

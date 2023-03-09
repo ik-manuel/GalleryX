@@ -17,7 +17,10 @@
         $user->set_image($_FILES['user_image']);
         $user->upload_photo();
         $user->save();
-        $message = "new user {$user->username} successfully created";
+        
+        $session->message("The user {$user->username} has been created successfully");
+        redirect("users.php");
+
       }else{
         $message = "Field can not be empty";
       }
@@ -53,12 +56,26 @@
 
         <!-- Page Content -->
         <h1>Add User</h1>
+        <hr><br>
       
         
         
         <form action="" method="post" enctype="multipart/form-data">
             <div class="col-md-6 col-md-offset-3">
-              <?php echo $message; ?>
+              
+              <?php 
+
+                //Display Message
+                if(!empty($message)){
+                  $output = "<div class='alert alert-success alert-dismissible'>";
+                  $output .= "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
+                  $output .= "<strong>{$message}</strong></div>";
+
+                  echo $output;
+                }
+
+               ?>
+
               <div class="form-group">
                 <input type="file" name="user_image">
               </div>

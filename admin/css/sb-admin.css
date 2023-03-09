@@ -6299,7 +6299,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
+    max-width: 80%;
     margin: 1.75rem auto;
   }
   .modal-dialog-scrollable {
@@ -6322,13 +6322,13 @@ a.close.disabled {
 @media (min-width: 992px) {
   .modal-lg,
   .modal-xl {
-    max-width: 800px;
+    max-width: 80%;
   }
 }
 
 @media (min-width: 1200px) {
   .modal-xl {
-    max-width: 1140px;
+    max-width: 80%;
   }
 }
 

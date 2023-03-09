@@ -11,6 +11,11 @@
           <span>Users</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="user_photos.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span><?php echo User::find_by_id($_SESSION['user_id'])->username; ?>'s Photos</span></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="upload.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Upload</span></a>

@@ -7,7 +7,9 @@
 if(empty($_GET['id'])){
   redirect("photos.php");
 }
-      
+
+$photo = Photo::find_by_id($_GET['id']);
+    
 $comments = Comment::find_the_comments($_GET['id']);
 
 ?>
@@ -36,8 +38,21 @@ $comments = Comment::find_the_comments($_GET['id']);
         </ol>
 
         <!-- Page Content -->
-        <h1>comments</h1>
+        <h3><?php if(!empty($photo->title)){echo "Photo: " . $photo->title . "'s";}else{echo "" ;}  ?> Comments </h3>
         <br>
+
+        <!--  Display Message -->
+        <?php 
+            
+            if(!empty($message)){
+
+                $output = "<div class='alert alert-success alert-dismissible'>";
+                $output .= "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
+                $output .= "<strong>{$message}</strong></div>";
+                echo $output;
+              }
+
+         ?>
 
         <div class="col-md-12">
           <table class="table table-hover">
@@ -58,7 +73,7 @@ $comments = Comment::find_the_comments($_GET['id']);
                 <td><?php echo $comment->body; ?></td>
                 <td>
                   <div class="action_links">
-                    <a href="delete_comment_photo.php?id=<?php echo $comment->id; ?>">Delete</a>
+                    <a class="delete_link" href="delete_comment_photo.php?id=<?php echo $comment->id; ?>">Delete</a>
                     <a href="edit_comment.php?id=<?php echo $comment->id; ?>">Edit</a>
                   </div>
                 </td>

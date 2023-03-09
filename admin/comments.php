@@ -32,6 +32,19 @@
         <!-- Page Content -->
         <h1>All Comments</h1>
         <br>
+
+        <!--  Display Message -->
+        <?php 
+            
+            if(!empty($message)){
+
+                $output = "<div class='alert alert-success alert-dismissible'>";
+                $output .= "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
+                $output .= "<strong>{$message}</strong></div>";
+                echo $output;
+              }
+
+         ?>
         
 
         <div class="col-md-12">
@@ -53,7 +66,7 @@
                 <td><?php echo $comment->body; ?></td>
                 <td>
                   <div class="action_links">
-                    <a href="delete_comment.php?id=<?php echo $comment->id; ?>">Delete</a>
+                    <a class="delete_link" href="delete_comment.php?id=<?php echo $comment->id; ?>">Delete</a>
                     <a href="edit_comment.php?id=<?php echo $comment->id; ?>">Edit</a>
                   </div>
                 </td>

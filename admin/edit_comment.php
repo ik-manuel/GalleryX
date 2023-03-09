@@ -18,12 +18,12 @@
       $comment->body = $_POST['body'];
 
       $comment->save();
+      $session->message("The comment has been updated successfully");
+      redirect("comments.php");
 
-      redirect("edit_comment.php?id={$comment->id}");
+      //redirect("edit_comment.php?id={$comment->id}");
 
-      $message = "comment successfully updated";
-
-         
+ 
       }
 
       
@@ -69,7 +69,7 @@
                 <textarea class="form-control" name="body" cols="10" rows="10"><?php echo $comment->body; ?> </textarea>
               </div>
               <input type="submit" name="update" value="Update" class="btn btn-primary pull-right">
-              <a class="btn btn-danger pull-left" href="delete_comment_photo.php?id=<?php echo $comment->id ?>">Delete</a>
+              <a class="btn btn-danger delete_link pull-left" href="delete_comment_photo.php?id=<?php echo $comment->id ?>">Delete</a>
       </form>
       </div>
 

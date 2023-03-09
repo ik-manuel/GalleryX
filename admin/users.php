@@ -31,7 +31,23 @@
 
         <!-- Page Content -->
         <h1>users</h1>
-        <a href="add_user.php" class="btn btn-primary pull-right">Add User</a>
+         
+
+        <!--  Display Message -->
+        <?php 
+            
+            if(!empty($message)){
+
+                $output = "<div class='alert alert-success alert-dismissible'>";
+                $output .= "<button type='button' class='close' data-dismiss='alert'>&times;</button>";
+                $output .= "<strong>{$message}</strong></div>";
+                echo $output;
+              }
+
+         ?>
+  
+
+         <a href="add_user.php" class="btn btn-primary pull-right">Add User</a>
         <br><br>
       
 

@@ -14,6 +14,7 @@ class Database{
      	if($this->connection->connect_errno){
      		die("Database connection failed" . mysqli_error());
      	}
+          return $this->connection;
      }
 
      public function query($sql){

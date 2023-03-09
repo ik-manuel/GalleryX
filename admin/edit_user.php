@@ -4,40 +4,50 @@
 
 <?php
 
-  $message = "";
-  
-  if(empty($_GET['id'])){
-    redirect("users.php");
-  }
 
-  $user = User::find_by_id($_GET['id']);
+$message = "";
 
-  if(isset($_POST['update'])){
-    
+if(empty($_GET['id'])){
+  redirect("users.php");
+}
+
+$user = User::find_by_id($_GET['id']);
+
+if(isset($_POST['update'])){
+
+    if($user){
+
       $user->username = $_POST['username'];
       $user->first_name = $_POST['first_name'];
       $user->last_name = $_POST['last_name'];
       $user->password = $_POST['password'];
 
-      if(!empty($_POST['username']) && !empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['password'])){
-        if(empty($_FILES['user_image'])){
-          $user->save();
-        }else{
-          $user->set_image($_FILES['user_image']);
-          $user->upload_photo();
-          $user->save();
 
-          redirect("edit_user.php?id={$user->id}");
+      if(empty($_FILES['user_image'])){
+        $user->save();
 
-          $message = "user {$user->username} successfully updated";
+        $session->message("The user {$user->username} has been updated successfully");
+        redirect("users.php");
 
-         }
       }else{
-        $message = "Field can not be empty";
-      }
+        $user->set_image($_FILES['user_image']);
+        $user->upload_photo();
+        $user->save();
 
-      
-  }
+        // redirect("edit_user.php?id={$user->id}");
+        
+        $session->message("The user {$user->username} has been updated successfully");
+        redirect("users.php");
+        
+       }
+    }
+
+    
+ }
+
+
+ /// Object for Photo Library Modal
+$photos = Photo::find_all();
 
 
 ?>
@@ -69,8 +79,10 @@
         <h1>Edit User</h1>
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 user_image_box">
+           <a href="" data-toggle="modal" data-target="#photo-library"> 
             <img class="photo-responsive" src="<?php echo $user->image_path_and_placeholder(); ?>">
+          </a>
           </div>
 
           <div class="col-md-6">
@@ -96,7 +108,7 @@
                   <input type="password" name="password" class="form-control" value="<?php echo $user->password; ?>">
                 </div>
                 <input type="submit" name="update" value="Update" class="btn btn-primary pull-right">
-                <a class="btn btn-danger pull-left" href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
+                <a id="user-id" class="btn btn-danger delete_link pull-left" href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
         </form>
         </div>
 
@@ -106,6 +118,56 @@
       
       </div>
       <!-- /.container-fluid -->
+
+
+
+<!--/////// PHOTO GALLERY LIBRARY MODAL //////////-->
+      
+  <div class="modal fade" id="photo-library">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Gallery System Library</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+         <div class="row">
+          <div class="col-md-9">
+             <div class="thumbnails row">
+            
+                <!-- PHP FOREACH LOOP -->
+                <?php foreach ($photos as $photo) : ?>
+                
+               <div class="col-xs-2">
+                 <a role="checkbox" aria-checked="false" tabindex="0" id="" href="#" class="thumbnails">
+                   <img class="modal_thumbnails photo-responsive" src="<?php echo $photo->picture_path(); ?>" data="<?php echo $photo->id; ?>">
+                 </a>
+                  <div class="photo-id hidden"></div>
+               </div>
+
+                    <!-- END OF PHP LOOP-->
+                  <?php endforeach; ?>
+
+             </div>
+          </div><!--col-md-9 -->
+
+          <div class="col-md-3">
+            <div id="modal_sidebar"></div>
+          </div>
+          </div>
+   
+   </div><!--Modal Body-->
+      <div class="modal-footer">
+        <div class="row">
+               <!--Closes Modal-->
+              <button id="set_user_image" type="button" class="btn btn-primary" disabled="true" data-dismiss="modal">Apply Selection</button>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/////// END OF PHOTO GALLERY LIBRARY MODAL //////////-->
+
 
      
       <!-- Sticky Footer -->

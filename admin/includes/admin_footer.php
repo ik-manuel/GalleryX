@@ -45,6 +45,8 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="js/dropzone.js"></script>
   
   <!-- Google Chart API code-->
   <script type="text/javascript">

@@ -5,20 +5,23 @@
 <?php
 
 $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
-$items_per_page = 8;
-$item_total_count = Photo::counter();
-
+$items_per_page = 4;
+$item_total_count = User::user_photo_counter($_SESSION['user_id']);
 
 $pagination = new Pagination($page, $items_per_page, $item_total_count);
 
 $sql = "SELECT * FROM photos ";
-$sql .= "LIMIT {$items_per_page} ";
+$sql .= "WHERE user_id = " . $_SESSION['user_id'];
+$sql .= " LIMIT {$items_per_page} ";
 $sql .= "OFFSET {$pagination->offset()}";
+
 
 $photos = Photo::find_by_query($sql);
 
 
-//$photos = Photo::find_all();
+
+//$photos = User::find_by_id($_SESSION['user_id'])->user_photo();
+
 
 ?>
  
@@ -46,14 +49,10 @@ $photos = Photo::find_by_query($sql);
         </ol>
 
         
-        <h1>Photos</h1>
+        <h3><?php echo User::find_by_id($_SESSION['user_id'])->username; ?>'s photos</h3>
 
          <!--  Display Message -->
         <?php 
-
-        $test = Flash::add_message("hello", Flash::DANGER);
-        var_dump($test);
-        echo $test['type'];
             
             if(!empty($message)){
 
@@ -62,7 +61,6 @@ $photos = Photo::find_by_query($sql);
                 $output .= "<strong>{$message}</strong></div>";
                 echo $output;
               }
-
 
          ?>
 
@@ -74,19 +72,19 @@ $photos = Photo::find_by_query($sql);
 
             if($pagination->page_total() > 1){
               if($pagination->has_previous()){
-                echo "<li class='page-item'><a class='page-link' href='photos.php?page={$pagination->previous()}'>Previous</a></li>";
+                echo "<li class='page-item'><a class='page-link' href='user_photos.php?page={$pagination->previous()}'>Previous</a></li>";
               }
 
               for ($i=1; $i <= $pagination->page_total(); $i++) { 
                 if($i == $pagination->current_page){
-                  echo "<li class='page-item active'><a class='page-link' href='photos.php?page={$i}'>$i</a></li>";
+                  echo "<li class='page-item active'><a class='page-link' href='user_photos.php?page={$i}'>$i</a></li>";
                 }else{
-                  echo "<li class='page-item'><a class='page-link' href='photos.php?page={$i}'>$i</a></li>";
+                  echo "<li class='page-item'><a class='page-link' href='user_photos.php?page={$i}'>$i</a></li>";
                 }
               }
 
               if($pagination->has_next()){
-                echo "<li class='page-item'><a class='page-link' href='photos.php?page={$pagination->next()}'>Next</a></li>";
+                echo "<li class='page-item'><a class='page-link' href='user_photos.php?page={$pagination->next()}'>Next</a></li>";
               }
             }
 
@@ -121,8 +119,8 @@ $photos = Photo::find_by_query($sql);
                 <td><img src="<?php echo $photo->picture_path(); ?>" alt="" class="admin-photo-thumbnail">
 
                   <div class="action_link">
-                    <a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a>
-                    <a href="edit_photo.php?id=<?php echo $photo->id; ?>">Edit</a>
+                    <a class="delete_link" href="delete_user_photo.php?id=<?php echo $photo->id; ?>">Delete</a>
+                    <a href="edit_user_photo.php?id=<?php echo $photo->id; ?>">Edit</a>
                     <a href="../photo.php?id=<?php echo $photo->id; ?>">view</a>
                   </div>
 

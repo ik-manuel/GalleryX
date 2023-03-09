@@ -232,6 +232,15 @@ class Db_object {
 
 
 
+    public static function user_photo_counter($user_id){
+        global $database;
+        $sql = $database->query("SELECT COUNT(*) FROM photos WHERE user_id =" . $user_id);
+        $result_set = mysqli_fetch_array($sql);
+        return array_shift($result_set);
+    }
+
+
+
 
 
 

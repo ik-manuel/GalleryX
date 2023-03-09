@@ -3,7 +3,7 @@
 <?php 
 
 $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
-$items_per_page = 4;
+$items_per_page = 8;
 $item_total_count = Photo::counter();
 
 
